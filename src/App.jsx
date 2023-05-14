@@ -4,48 +4,56 @@
  * To contain application wide settings, routes, state, etc.
  */
 
-import React from "react";
-
-import About from "./Components/About";
+import React, { useState } from "react";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
+import About from "./Components/About";
+import Courses from "./Components/Courses";
 import Home from "./Components/Home";
 import Portfolio from "./Components/Portfolio";
 
 import "./styles.css";
 
-/**
- * This object represents your information. The project is set so that you
- * only need to update these here, and values are passed a properties to the
- * components that need that information.
- *
- * Update the values below with your information.
- *
- * If you don't have one of the social sites listed, leave it as an empty string.
- */
 const siteProps = {
-  name: "Alexandrie Grenier",
-  title: "Web Designer & Content Creator",
-  email: "alex@example.com",
-  gitHub: "microsoft",
-  instagram: "microsoft",
-  linkedIn: "satyanadella",
-  medium: "",
-  twitter: "microsoft",
-  youTube: "Code",
+  name: "Learning Shelter",
+  title: "Tools for the Homeless",
 };
 
 const primaryColor = "#4E567E";
 const secondaryColor = "#D2F1E4";
 
 const App = () => {
+  const [activePage, setActivePage] = useState("home");
+
+  const handlePageChange = (page) => {
+    setActivePage(page);
+  };
+
+  const renderPage = () => {
+    switch (activePage) {
+      case "home":
+        return <Home name={siteProps.name} title={siteProps.title} />;
+      case "portfolio":
+        return <Portfolio />;
+      case "courses":
+        return <Courses />;
+      case "about":
+        return <About />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div id="main">
-      <Header />
-      <Home name={siteProps.name} title={siteProps.title} />
-      <About />
-      <Portfolio />
-      <Footer {...siteProps} primaryColor={primaryColor} secondaryColor={secondaryColor} />
+      <Header onPageChange={handlePageChange} />
+      {renderPage()}
+      <Footer
+        {...siteProps}
+        primaryColor={primaryColor}
+        secondaryColor={secondaryColor}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

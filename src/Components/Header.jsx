@@ -5,10 +5,15 @@
  * user scrolls so that they can constantly reach any part of your page.
  */
 import React from "react";
+import PropTypes from "prop-types";
 
-const Header = () => {
+const Header = ({ activePage, onPageChange }) => {
+  const handlePageChange = (page) => {
+    onPageChange(page);
+  };
+
   return (
-    <div
+    <nav
       style={{
         position: "fixed",
         display: "flex",
@@ -21,12 +26,27 @@ const Header = () => {
         zIndex: 10,
       }}
     >
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#footer">Contact</a>
-    </div>
+      <ul>
+        <li className={activePage === "home" ? "active" : ""}>
+          <button onClick={() => handlePageChange("home")}>Home</button>
+        </li>
+        <li className={activePage === "portfolio" ? "active" : ""}>
+          <button onClick={() => handlePageChange("portfolio")}>Portfolio</button>
+        </li>
+        <li className={activePage === "courses" ? "active" : ""}>
+          <button onClick={() => handlePageChange("courses")}>Courses</button>
+        </li>
+        <li className={activePage === "about" ? "active" : ""}>
+          <button onClick={() => handlePageChange("about")}>About</button>
+        </li>
+      </ul>
+    </nav>
   );
+};
+
+Header.propTypes = {
+  activePage: PropTypes.string.isRequired,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 export default Header;
