@@ -45,7 +45,7 @@ const App = () => {
   };
 
   return (
-    <div id="main">
+    <div id="main" style={{ marginBottom: "40rem" }}>
       <Header onPageChange={handlePageChange} />
       {renderPage()}
       <Footer
@@ -53,8 +53,9 @@ const App = () => {
         primaryColor={primaryColor}
         secondaryColor={secondaryColor}
         onPageChange={handlePageChange}
+        style={{ height: "3rem", fontSize: "0.8rem" }}
       />
-    </div>
+  </div>
   );
 };
 

@@ -8,14 +8,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import image from "../images/building.jpg";
+import image from "../images/desk.jpg";
 
 const lessons = [
   {
-    title: "Chapter 1",
+    title: "Master Microsoft Word",
     videos: [
-      { id: 1, title: "Introduction to React", videoId: "abc123" },
-      { id: 2, title: "Components and Props", videoId: "def456" },
+      { id: 1, title: "Introduction to Word", videoId: "Cw6a3b5QoAs" },
+      { id: 2, title: "Become an Expert", videoId: "eaB9L1QkD0c" },
+      { id: 3, title: "Final Tips & Tricks", videoId: "Q_AaL6ljudU" },
       // Add more videos for Chapter 1
     ],
   },
@@ -57,8 +58,10 @@ const Courses = ({ lessons }) => {
 
   return (
     <div style={{ backgroundImage: `url(${image})` }}>
+      <div style={{ display: "flex", flexDirection: "row", paddingTop: "3rem" }}></div>
       <h2 style={{ textAlign: "center" }}>Courses</h2>
-      <p style={{ textAlign: "center" }}>Current Lesson: {currentLesson?.title}</p>
+      <div style={{ display: "flex", flexDirection: "row", paddingTop: "3rem" }}></div>
+      <h3 style={{ textAlign: "center" }}>Current Lesson: {currentLesson?.title}</h3>
 
       {videoWatched ? (
         quizCompleted ? (
@@ -79,23 +82,26 @@ const Courses = ({ lessons }) => {
         )
       ) : (
         <div>
-          <h3>Watch the Videos</h3>
+          <div style={{ display: "flex", flexDirection: "row", paddingTop: "2rem" }}></div>
           {/* Render YouTube videos for the current lesson here */}
           {currentLesson?.videos.map((video) => (
-            <div key={video.id}>
-              <h4>{video.title}</h4>
+            <div key={video.id} style={{ textAlign: "center", marginBottom: "5rem" }}>
+              <h3 style={{fontSize: "25px", fontFamily: "Mono", marginBottom: "20px" }}>{video.title}</h3>
               <iframe
                 width="560"
                 height="315"
                 src={`https://www.youtube.com/embed/${video.videoId}`}
                 title={video.title}
-                frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             </div>
           ))}
-          <button onClick={handleVideoWatched}>Mark as Watched</button>
+          <div style={{ display: "flex", justifyContent: "flex-end"}}>
+            <button onClick={handleVideoWatched} style={{ fontSize: "18px", padding: "10px 20px" }}>
+              Mark as Watched
+            </button>
+          </div>
         </div>
       )}
     </div>
