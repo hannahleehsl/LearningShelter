@@ -13,31 +13,39 @@ const Header = ({ activePage, onPageChange }) => {
   };
 
   return (
-    <nav
-      style={{
-        position: "fixed",
-        display: "flex",
-        justifyContent: "center",
-        gap: "2rem",
-        background: "rgba(255,255,255,0.75)",
-        padding: "1rem",
-        top: 0,
-        width: "100%",
-        zIndex: 10,
-      }}
-    >
-      <ul>
-        <li className={activePage === "home" ? "active" : ""}>
-          <button onClick={() => handlePageChange("home")}>Home</button>
+    <nav style={{ display: "flex", justifyContent: "center", backgroundColor: "rgba(255, 255, 255, alpha)" }}>
+      <ul style={{ listStyleType: "none", padding: 0, display: "flex", flexDirection: "row" }}>
+        <li className={activePage === "home" ? "active" : ""} style={{ margin: "0 1rem" }}>
+          <button
+            style={{ fontSize: "1.5rem", background: "none", border: "none", fontFamily: "Montserrat" }}
+            onClick={() => handlePageChange("home")}
+          >
+            Home
+          </button>
         </li>
-        <li className={activePage === "portfolio" ? "active" : ""}>
-          <button onClick={() => handlePageChange("portfolio")}>Portfolio</button>
+        <li className={activePage === "portfolio" ? "active" : ""} style={{ margin: "0 1rem" }}>
+          <button
+            style={{ fontSize: "1.5rem", background: "none", border: "none", fontFamily: "Montserrat" }}
+            onClick={() => handlePageChange("portfolio")}
+          >
+            Portfolio
+          </button>
         </li>
-        <li className={activePage === "courses" ? "active" : ""}>
-          <button onClick={() => handlePageChange("courses")}>Courses</button>
+        <li className={activePage === "courses" ? "active" : ""} style={{ margin: "0 1rem" }}>
+          <button
+            style={{ fontSize: "1.5rem", background: "none", border: "none", fontFamily: "Montserrat" }}
+            onClick={() => handlePageChange("courses")}
+          >
+            Courses
+          </button>
         </li>
-        <li className={activePage === "about" ? "active" : ""}>
-          <button onClick={() => handlePageChange("about")}>About</button>
+        <li className={activePage === "about" ? "active" : ""} style={{ margin: "0 1rem" }}>
+          <button
+            style={{ fontSize: "1.5rem", background: "none", border: "none", fontFamily: "Montserrat" }}
+            onClick={() => handlePageChange("about")}
+          >
+            About
+          </button>
         </li>
       </ul>
     </nav>

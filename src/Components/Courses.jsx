@@ -7,6 +7,9 @@
 
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+
+import image from "../images/building.jpg";
+
 const lessons = [
   {
     title: "Chapter 1",
@@ -53,9 +56,9 @@ const Courses = ({ lessons }) => {
   const currentLesson = lessons[currentLessonIndex];
 
   return (
-    <div>
-      <h1>Lesson Header</h1>
-      <h2>Current Lesson: {currentLesson?.title}</h2>
+    <div style={{ backgroundImage: `url(${image})` }}>
+      <h2 style={{ textAlign: "center" }}>Courses</h2>
+      <p style={{ textAlign: "center" }}>Current Lesson: {currentLesson?.title}</p>
 
       {videoWatched ? (
         quizCompleted ? (
