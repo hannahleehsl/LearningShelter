@@ -7,19 +7,19 @@ const Quiz = () => {
 
   const quizData = [
     {
-      question: "What is the capital of France?",
-      options: ["Paris", "London", "Berlin", "Rome"],
-      correctAnswer: "Paris",
+      question: "Which key combination allows you to move one cell to the LEFT in a table.",
+      options: ["Shift + Space", "Shift + Tab", "Space + Tab", "Esc + Shift"],
+      correctAnswer: "Shift + Tab",
     },
     {
-      question: "Which planet is known as the Red Planet?",
-      options: ["Mars", "Venus", "Jupiter", "Saturn"],
-      correctAnswer: "Mars",
+      question: "Menu used to do the common functions such as Print, Save, and Open a file",
+      options: ["File", "Edit", "View", "Properties"],
+      correctAnswer: "File",
     },
     {
-      question: "Who painted the Mona Lisa?",
-      options: ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Michelangelo"],
-      correctAnswer: "Leonardo da Vinci",
+      question: "What is a leader in Word",
+      options: ["Bar at the bottom of the screen that contains the Windows applications button and all open programs.", "Bar at the bottom of a Word document that shows how many pages are in the document and which page the cursor is on.", "A tab set with solid lines, dots, or dashes leading up to it.", "General term referring to where the text appears on the page in comparison to the margins."],
+      correctAnswer: "A tab set with solid lines, dots, or dashes leading up to it.",
     },
   ];
 
@@ -38,6 +38,10 @@ const Quiz = () => {
   };
 
   const renderQuizQuestion = () => {
+    if (currentQuestion >= quizData.length) {
+      return null; // Exit early if the currentQuestion exceeds the quizData length
+    }
+
     const question = quizData[currentQuestion];
 
     return (
@@ -59,7 +63,11 @@ const Quiz = () => {
             </li>
           ))}
         </ul>
-        <button onClick={handleNextQuestion}>Next</button>
+        {currentQuestion === quizData.length - 1 && !quizCompleted ? (
+          <button onClick={handleQuizSubmit}>Submit Quiz</button>
+        ) : (
+          <button onClick={handleNextQuestion}>Next</button>
+        )}
       </div>
     );
   };
@@ -72,19 +80,14 @@ const Quiz = () => {
     return (
       <div>
         <h3>Quiz Completed!</h3>
-        <p>You answered {correctAnswers} out of {quizData.length} questions correctly.</p>
+        <p>
+          You answered {correctAnswers} out of {quizData.length} questions correctly.
+        </p>
       </div>
     );
   };
 
-  return (
-    <div>
-      {quizCompleted ? renderQuizResults() : renderQuizQuestion()}
-      {currentQuestion === quizData.length - 1 && !quizCompleted && (
-        <button onClick={handleQuizSubmit}>Submit Quiz</button>
-      )}
-    </div>
-  );
+  return <div>{quizCompleted ? renderQuizResults() : renderQuizQuestion()}</div>;
 };
 
 export default Quiz;

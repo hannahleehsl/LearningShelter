@@ -14,7 +14,7 @@ const Header = ({ activePage, onPageChange }) => {
 
   return (
     <nav style={{ display: "flex", justifyContent: "center", backgroundColor: "rgba(255, 255, 255, alpha)" }}>
-      <ul style={{ listStyleType: "none", padding: 0, display: "flex", flexDirection: "row" }}>
+      <ul style={{ listStyleType: "none", padding: 0, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
         <li className={activePage === "home" ? "active" : ""} style={{ margin: "0 1rem" }}>
           <button
             style={{ fontSize: "1.5rem", background: "none", border: "none", fontFamily: "Montserrat" }}
